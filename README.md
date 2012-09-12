@@ -20,19 +20,19 @@ This project will deserialize Glitch API responses into typed JAVA object. Poten
 ####Example
 Doing a request:
 ```java
-GlitchRequest request = glitch.getRequest("players.info");
+GlitchRequest request = glitch.getRequest(Players.FULL_INFO, params);
 request.execute(this);
 ```
 
 In the response handler:
 ```java
 Gson gson = new Gson();
-PlayerInfo info = gson.fromJson(request.response.toString(), PlayerInfo.class)
+FullInfoResponse info = gson.fromJson(request.response.toString(), FullInfoResponse.class)
 ```
 
 ###TODO
 Fork the Glitch Android SDK repo and modify GlitchAsyncTask.doInBackground() to return a String. This way I can use the request.response property without converting it to a String again, like:
 ```java
-PlayerInfo info = gson.fromJson(request.response, PlayerInfo.class)
+FullInfoResponse info = gson.fromJson(request.response, FullInfoResponse.class)
 ```
 It would also  save a little bit on performance as we're not going from String to JSONObject to String again.
