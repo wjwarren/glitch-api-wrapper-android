@@ -16,6 +16,10 @@ public class LocationVO {
 	public String tsid;
 	
 	@SerializedName("is_pol")
-	public boolean isPol;
+	private int isPol;
+	
+	public boolean getIsPol() {
+		return isPol > 0;
+	}
 	
 }
