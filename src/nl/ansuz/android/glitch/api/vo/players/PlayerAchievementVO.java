@@ -1,15 +1,13 @@
 package nl.ansuz.android.glitch.api.vo.players;
 
-import java.util.HashMap;
-
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Representation of an achievement in Glitch.
+ * Representation of an achievement in Glitch in the player responses.
  * 
  * @author Wijnand
  */
-public class AchievementVO {
+public class PlayerAchievementVO {
 
 	@SerializedName("id")
 	public String id;

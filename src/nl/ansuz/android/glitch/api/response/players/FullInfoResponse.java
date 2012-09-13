@@ -1,7 +1,7 @@
 package nl.ansuz.android.glitch.api.response.players;
 
 import nl.ansuz.android.glitch.api.response.GlitchResponse;
-import nl.ansuz.android.glitch.api.vo.players.AchievementVO;
+import nl.ansuz.android.glitch.api.vo.players.PlayerAchievementVO;
 import nl.ansuz.android.glitch.api.vo.players.AvatarVO;
 import nl.ansuz.android.glitch.api.vo.players.LocationVO;
 import nl.ansuz.android.glitch.api.vo.players.PolVO;
@@ -27,7 +27,7 @@ public class FullInfoResponse extends GlitchResponse {
 	public String tsid;
 
 	@SerializedName("is_online")
-	public Boolean isOnline;
+	public boolean isOnline;
 
 	@SerializedName("last_online")
 	public int lastOnline;
@@ -45,7 +45,7 @@ public class FullInfoResponse extends GlitchResponse {
 	public int numberOfSkills;
 
 	@SerializedName("latest_achievement")
-	public AchievementVO latestAchievement;
+	public PlayerAchievementVO latestAchievement;
 
 	@SerializedName("num_achievements")
 	public int numberOfAchievements;
@@ -84,4 +84,5 @@ public class FullInfoResponse extends GlitchResponse {
 	private void init() {
 		tsid = "";
 	}
+	
 }
