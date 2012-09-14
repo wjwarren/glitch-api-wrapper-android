@@ -10,6 +10,9 @@ public class GlitchResponse {
 	@SerializedName("error")
 	public String error;
 	
+	@SerializedName("required_scope")
+	public String requiredScope;
+	
 	/**
 	 * Whether or not the request was successful.
 	 * If not, the error String is set with an error message.
