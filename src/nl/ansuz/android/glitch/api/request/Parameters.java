@@ -6,6 +6,7 @@ public class Parameters {
 	public static final String ACHIEVEMENT_CLASS_TSID = "achievement_class_tsid";
 	public static final String PAGE = "page";
 	public static final String PER_PAGE = "per_page";
+	public static final String CATEGORY = "category";
 	
 	// Players
 	public static final String PLAYER_TSID = "player_tsid";
