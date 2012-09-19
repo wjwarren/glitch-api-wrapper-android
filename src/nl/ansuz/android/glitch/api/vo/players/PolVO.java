@@ -19,7 +19,7 @@ public class PolVO {
 	public String streetTsid;
 	
 	@SerializedName("street_hub_id")
-	public int streetHubId;
+	public String streetHubId;
 	
 	@SerializedName("street_name")
 	public String streetName;
