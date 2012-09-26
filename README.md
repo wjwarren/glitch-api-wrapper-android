@@ -12,7 +12,10 @@ This project will deserialize Glitch API responses into typed JAVA object. Poten
 
 ####What does it do?
 * Deserialize Glitch API response into 'GlitchResponse' objects.
-* Provide a set of 'GlitchRequest' classes that store string literals for the various API requests.
+* Provide a set of 'GlitchRequest' classes that:
+ * Store string literals for the various API requests.
+ * Store string literals for the various API request parameters.
+ * Expose 'GlitchRequest' creation methods that will simplify creating a particular 'GlitchRequest'.
 
 ####What doesn't it do?
 * Automatically parse any response into its 'GlitchResponse' counterpart.
@@ -20,7 +23,7 @@ This project will deserialize Glitch API responses into typed JAVA object. Poten
 ####Example
 Doing a request:
 ```java
-GlitchRequest request = glitch.getRequest(Players.FULL_INFO, params);
+GlitchRequest request = Players.createFullInfoRequest(glitchApi, playerTsid, viewerTsid);
 request.execute(this);
 ```
 
