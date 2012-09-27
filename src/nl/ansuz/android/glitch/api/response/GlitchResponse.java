@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class GlitchResponse {
 
 	@SerializedName("ok")
-	private int ok;
+	public int ok;
 	
 	@SerializedName("error")
 	public String error;
