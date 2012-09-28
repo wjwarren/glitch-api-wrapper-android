@@ -7,8 +7,6 @@ import java.util.Map;
 import nl.ansuz.android.glitch.api.response.skills.ListUnlearningResponse;
 import nl.ansuz.android.glitch.api.vo.players.SkillVO;
 
-import android.util.Log;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -28,7 +26,7 @@ import com.google.gson.JsonParseException;
  * 
  * @author Wijnand
  */
-public class ListUnlearningDeserializer implements
+public class ListUnlearningDeserializer extends GlitchDeserializer implements
 		JsonDeserializer<ListUnlearningResponse> {
 
 	/**
@@ -41,24 +39,11 @@ public class ListUnlearningDeserializer implements
 	public ListUnlearningResponse deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
 
-		Log.v("ListUnlearningDeserializer", "deserialize()");
-
 		ListUnlearningResponse result = new ListUnlearningResponse();
 		JsonObject jsonObject = json.getAsJsonObject();
 
-		// Get response status.
-		result.ok = jsonObject.getAsJsonPrimitive("ok").getAsInt();
-
-		// Get error message if it is available.
-		if (jsonObject.has("error")) {
-			result.error = jsonObject.getAsJsonPrimitive("error").getAsString();
-		}
-
-		// Get required scope if it is available.
-		if (jsonObject.has("required_scope")) {
-			result.requiredScope = jsonObject.getAsJsonPrimitive(
-					"required_scope").getAsString();
-		}
+		// Deserialize defaults.
+		result = (ListUnlearningResponse)deserializeResponseDefaults(result, jsonObject);
 
 		// Get unlearning list if it is available.
 		if (jsonObject.has("unlearning")) {
