@@ -1,5 +1,8 @@
 package nl.ansuz.android.glitch.api.vo.players;
 
+import nl.ansuz.android.glitch.api.vo.skills.AssociatedGiantVO;
+import nl.ansuz.android.glitch.api.vo.skills.SkillRequirementVO;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -58,4 +61,74 @@ public class SkillVO {
 	@SerializedName("time_complete")
 	public int timeComplete;
 	
+	@SerializedName("giants")
+	public AssociatedGiantVO[] giants;
+	
+	@SerializedName("reqs")
+	public SkillRequirementVO[] detailedRequirements;
+	
+	@SerializedName("post_reqs")
+	public SkillRequirementVO[] postRequirements;
+	
+	@SerializedName("learning")
+	private int learning;
+	
+	@SerializedName("got")
+	private int got;
+	
+	@SerializedName("paused")
+	private int paused;
+	
+	@SerializedName("can_learn")
+	private int canLearn;
+	
+	@SerializedName("can_unlearn")
+	private int canUnlearn;
+	
+	@SerializedName("unlearning")
+	private int unlearning;
+	
+	/**
+	 * Whether or not this Skill is currently being taught.
+	 */
+	public boolean getLearning() {
+		return learning > 0;
+	}
+	
+	/**
+	 * Whether or not this Skill has already been acquired.
+	 */
+	public boolean getAcquired() {
+		return got > 0;
+	}
+	
+	/**
+	 * Whether or not learning this Skill has been paused.
+	 */
+	public boolean getPaused() {
+		return paused > 0;
+	}
+	
+	/**
+	 * Whether or not this Skill can be taught.
+	 */
+	public boolean getCanLearn() {
+		return canLearn > 0;
+	}
+	
+	/**
+	 * Whether or not this Skill can be "unlearned".
+	 * 
+	 * (NOTE: Why not call this "forget"?)
+	 */
+	public boolean getCanUnlearn() {
+		return canUnlearn > 0;
+	}
+	
+	/**
+	 * Whether or not this Skill is being "unlearned".
+	 */
+	public boolean getUnlearning() {
+		return unlearning > 0;
+	}
 }
