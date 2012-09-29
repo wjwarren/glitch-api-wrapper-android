@@ -32,16 +32,18 @@ public class UnlearnDeserializer extends GlitchDeserializer implements JsonDeser
 		// Deserialize defaults.
 		result = (UnlearnResponse)deserializeResponseDefaults(result, jsonObject);
 		
-		// Deserialize unlearning info.
-		for(Map.Entry<String, JsonElement> jsonElement : jsonObject.entrySet()) {
-			if(!isDefaultProperty(jsonElement.getKey()) && result.getSuccess()) {
-				// When it isn't a default API response element, it must be the
-				// Skill info. Gotta love this well structured JSON!!! :S
-				result.skill = context.deserialize(jsonElement.getValue(), UnlearningVO.class);
-				result.skill.name = jsonElement.getKey();
-				
-				// Stop as soon as we've found the Skill info.
-				break;
+		if(result.getSuccess()) {
+			// Deserialize unlearning info.
+			for(Map.Entry<String, JsonElement> jsonElement : jsonObject.entrySet()) {
+				if(!isDefaultProperty(jsonElement.getKey())) {
+					// When it isn't a default API response element, it must be the
+					// Skill info. Gotta love this well structured JSON!!! :S
+					result.skill = context.deserialize(jsonElement.getValue(), UnlearningVO.class);
+					result.skill.name = jsonElement.getKey();
+					
+					// Stop as soon as we've found the Skill info.
+					break;
+				}
 			}
 		}
 		
