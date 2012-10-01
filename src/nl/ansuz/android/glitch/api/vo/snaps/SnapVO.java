@@ -45,6 +45,9 @@ public class SnapVO {
 	@SerializedName("count_likes")
 	public String likeCount;
 	
+	@SerializedName("liked_by_me")
+	private int likedByMe;
+	
 	@SerializedName("orig_h")
 	public String originalHeight;
 	
@@ -83,6 +86,15 @@ public class SnapVO {
 	
 	@SerializedName("files")
 	public FilesVO files;
+	
+	@SerializedName("owner")
+	public SnapOwnerVO owner;
+	
+	@SerializedName("standard_h")
+	public int standardHeight;
+	
+	@SerializedName("thumb_h")
+	public int thumbnailHeight;
 
 	/**
 	 * Whether or not this Snap has been processed.
@@ -110,6 +122,13 @@ public class SnapVO {
 	 */
 	public boolean getIsOk() {
 		return Integer.parseInt(isOk) > 0;
+	}
+	
+	/**
+	 * Whether or not this Snap is liked by me.
+	 */
+	public boolean getLikedByMe() {
+		return likedByMe > 0;
 	}
 	
 }
