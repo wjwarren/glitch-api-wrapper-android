@@ -1,10 +1,5 @@
 package nl.ansuz.android.glitch.api.response.snaps;
 
-import com.google.gson.annotations.SerializedName;
-
-import nl.ansuz.android.glitch.api.response.PagedResponse;
-import nl.ansuz.android.glitch.api.vo.snaps.SnapVO;
-
 /**
  * Response object for snaps.getForLocation.
  * 
@@ -15,11 +10,6 @@ import nl.ansuz.android.glitch.api.vo.snaps.SnapVO;
  * @see http://developer.glitch.com/api/explore/#!snaps.getForLocation
  * @author Wijnand
  */
-public class GetForLocationResponse extends PagedResponse {
+public class GetForLocationResponse extends SnapListBaseResponse {
 
-	// TODO: Create custom Deserializer to deal with pagination.
-	
-	@SerializedName("photos")
-	public SnapVO[] snaps;
-	
 }
