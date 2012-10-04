@@ -8,7 +8,7 @@ import com.google.gson.JsonParseException;
 
 import nl.ansuz.android.glitch.api.response.GlitchResponse;
 import nl.ansuz.android.glitch.api.response.PagedResponse;
-import nl.ansuz.android.glitch.api.response.snaps.SnapListBaseResponse;
+import nl.ansuz.android.glitch.api.response.snaps.base.SnapListBaseResponse;
 import nl.ansuz.android.glitch.api.util.gson.GlitchDeserializer;
 import nl.ansuz.android.glitch.api.vo.snaps.SnapVO;
 

@@ -1,5 +1,7 @@
 package nl.ansuz.android.glitch.api.response.snaps;
 
+import nl.ansuz.android.glitch.api.response.snaps.base.SnapListBaseResponse;
+
 /**
  * Response object for snaps.getForLocation.
  * 

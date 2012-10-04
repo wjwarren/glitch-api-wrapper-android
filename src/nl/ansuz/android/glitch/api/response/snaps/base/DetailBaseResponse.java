@@ -1,4 +1,4 @@
-package nl.ansuz.android.glitch.api.response.snaps;
+package nl.ansuz.android.glitch.api.response.snaps.base;
 
 import com.google.gson.annotations.SerializedName;
 

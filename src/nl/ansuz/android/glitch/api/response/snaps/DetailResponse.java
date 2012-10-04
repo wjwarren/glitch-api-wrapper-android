@@ -1,5 +1,6 @@
 package nl.ansuz.android.glitch.api.response.snaps;
 
+import nl.ansuz.android.glitch.api.response.snaps.base.DetailBaseResponse;
 import nl.ansuz.android.glitch.api.vo.snaps.CommentVO;
 
 import com.google.gson.annotations.SerializedName;

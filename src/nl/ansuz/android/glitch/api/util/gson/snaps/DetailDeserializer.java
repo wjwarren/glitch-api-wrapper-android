@@ -2,8 +2,8 @@ package nl.ansuz.android.glitch.api.util.gson.snaps;
 
 import java.lang.reflect.Type;
 
-import nl.ansuz.android.glitch.api.response.snaps.DetailBaseResponse;
 import nl.ansuz.android.glitch.api.response.snaps.DetailResponse;
+import nl.ansuz.android.glitch.api.response.snaps.base.DetailBaseResponse;
 import nl.ansuz.android.glitch.api.util.gson.GlitchDeserializer;
 import nl.ansuz.android.glitch.api.vo.snaps.CommentVO;
 
