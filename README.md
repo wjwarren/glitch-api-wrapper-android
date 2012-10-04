@@ -4,7 +4,8 @@ glitch-api-wrapper-android
 A [Glitch API](http://developer.glitch.com/api/) wrapper for Android.
 
 ###Requirements
-* [Glitch Android SDK](https://github.com/tinyspeck/glitch-android-sdk)
+* [Glitch Android SDK](https://github.com/tinyspeck/glitch-android-sdk) OR
+* [My fork of the Glitch Android SDK](https://github.com/wjwarren/glitch-android-sdk)
 * [Google GSON](http://code.google.com/p/google-gson/) (A library to convert JSON to Java and Java to JSON.)
 
 ###Overview
@@ -30,12 +31,6 @@ request.execute(this);
 In the response handler:
 ```java
 Gson gson = new Gson();
-FullInfoResponse info = gson.fromJson(request.response.toString(), FullInfoResponse.class)
-```
-
-###TODO
-Fork the Glitch Android SDK repo and modify GlitchAsyncTask.doInBackground() to return a String. This way I can use the request.response property without converting it to a String again, like:
-```java
 FullInfoResponse info = gson.fromJson(request.response, FullInfoResponse.class)
 ```
-It would also  save a little bit on performance as we're not going from String to JSONObject to String again.
+**_NOTE:_** Use `request.response.toString()` when you are not using my fork of the Glitch SDK.
