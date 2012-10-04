@@ -13,7 +13,7 @@ public class PagedResponse extends GlitchResponse {
 	public int pages;
 	
 	@SerializedName("per_page")
-	public int per_page;
+	public int perPage;
 	
 	@SerializedName("page")
 	public int page;
