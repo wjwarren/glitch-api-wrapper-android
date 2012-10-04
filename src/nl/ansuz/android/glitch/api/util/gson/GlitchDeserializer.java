@@ -1,7 +1,10 @@
 package nl.ansuz.android.glitch.api.util.gson;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.util.Log;
 
 import com.google.gson.JsonObject;
 
@@ -9,6 +12,8 @@ import nl.ansuz.android.glitch.api.response.GlitchResponse;
 
 public class GlitchDeserializer {
 
+	private static final String LOG_TAG = "GlitchDeserializer";
+	
 	protected final static String OK = "ok";
 	protected final static String ERROR = "error";
 	protected final static String REQUIRED_SCOPE = "required_scope";
@@ -48,5 +53,45 @@ public class GlitchDeserializer {
 		defaultProperties.add(REQUIRED_SCOPE);
 		
 		return defaultProperties.contains(propertyName);
+	}
+	
+	/**
+	 * Copies the values from the base to the actual SkillVO.
+	 * 
+	 * @param from The base object to copy the values from.
+	 * @param to The object to copy the values to.
+	 */
+	protected Object copyFromTo(Object from, Object to) {
+		Field[] baseFields = from.getClass().getFields();
+		
+		for(Field fromProperty : baseFields) {
+			String propertyName = fromProperty.getName();
+			
+			Object value = null;
+			
+			try {
+				value = from.getClass().getDeclaredField(propertyName).get(from);
+			} catch (NoSuchFieldException e) {
+				Log.e(LOG_TAG, " - NoSuchFieldException when getting the value.");
+				continue;
+			} catch (IllegalAccessException e) {
+				Log.e(LOG_TAG, " - IllegalAccessException when getting the value.");
+				continue;
+			}
+			
+			try {
+				Field toField = to.getClass().getField(propertyName);
+				toField.set(to, value);
+			} catch (NoSuchFieldException e) {
+				Log.e(LOG_TAG, " - NoSuchFieldException when setting the value.");
+				continue;
+			} catch(IllegalAccessException e) {
+				Log.e(LOG_TAG, " - IllegalAccessException when setting the value.");
+				continue;
+			}
+			
+		}
+		
+		return to;
 	}
 }

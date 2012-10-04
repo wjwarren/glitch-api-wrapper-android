@@ -1,12 +1,10 @@
 package nl.ansuz.android.glitch.api.util.gson.skills;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
+import nl.ansuz.android.glitch.api.util.gson.GlitchDeserializer;
 import nl.ansuz.android.glitch.api.vo.players.SkillVO;
 import nl.ansuz.android.glitch.api.vo.players.SkillVOBase;
-
-import android.util.Log;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -21,9 +19,7 @@ import com.google.gson.JsonPrimitive;
  * 
  * @author Wijnand
  */
-public class SkillVODeserializer implements JsonDeserializer<SkillVO> {
-	
-	private static final String LOG_TAG = "SkillVODeserializer";
+public class SkillVODeserializer extends GlitchDeserializer implements JsonDeserializer<SkillVO> {
 	
 	/**
 	 * @see super.deserialize(json, typeOfT, context)
@@ -77,37 +73,7 @@ public class SkillVODeserializer implements JsonDeserializer<SkillVO> {
 	 * @param to The actual SkillVO to copy the values to.
 	 */
 	private SkillVO copyFromSkillBase(SkillVOBase from, SkillVO to) {
-		Field[] baseFields = SkillVOBase.class.getFields();
-		
-		for(Field fromProperty : baseFields) {
-			String propertyName = fromProperty.getName();
-			
-			Object value = null;
-			
-			try {
-				value = from.getClass().getDeclaredField(propertyName).get(from);
-			} catch (NoSuchFieldException e) {
-				Log.e(LOG_TAG, " - NoSuchFieldException when getting the value.");
-				continue;
-			} catch (IllegalAccessException e) {
-				Log.e(LOG_TAG, " - IllegalAccessException when getting the value.");
-				continue;
-			}
-			
-			try {
-				Field toField = to.getClass().getField(propertyName);
-				toField.set(to, value);
-			} catch (NoSuchFieldException e) {
-				Log.e(LOG_TAG, " - NoSuchFieldException when setting the value.");
-				continue;
-			} catch(IllegalAccessException e) {
-				Log.e(LOG_TAG, " - IllegalAccessException when setting the value.");
-				continue;
-			}
-			
-		}
-		
-		return to;
+		return (SkillVO)copyFromTo(from, to);
 	}
 
 }
