@@ -4,13 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import nl.ansuz.android.glitch.api.response.GlitchResponse;
 import nl.ansuz.android.glitch.api.vo.snaps.AvatarImagesVO;
-import nl.ansuz.android.glitch.api.vo.snaps.CommentVO;
 import nl.ansuz.android.glitch.api.vo.snaps.FilesVO;
 
 /**
- * Response object for snaps.comment.
+ * Base class for DetailResponse.
+ * (Helps with the custom deserializer.)
  * 
- * @see http://developer.glitch.com/api/explore/#!snaps.detail
  * @author Wijnand
  */
 public class DetailBaseResponse extends GlitchResponse {
@@ -50,9 +49,5 @@ public class DetailBaseResponse extends GlitchResponse {
 	
 	@SerializedName("images")
 	public FilesVO images;
-	
-	// TODO: Custom Deserializer!
-	@SerializedName("comments")
-	public CommentVO[] comments;
 	
 }

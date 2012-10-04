@@ -16,8 +16,6 @@ import nl.ansuz.android.glitch.api.vo.players.SkillVO;
 public class ListUnlearningResponse extends GlitchResponse {
 
 	// The skill class TSID is used as key.
-	// TODO: The API returns 0 when no skills are being unlearned.
-	// TODO: Test with ListUnlearningDeserializer.
 	@SerializedName("unlearning")
 	public Map<String, SkillVO> unlearning;
 	
