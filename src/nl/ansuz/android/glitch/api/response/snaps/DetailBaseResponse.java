@@ -13,7 +13,7 @@ import nl.ansuz.android.glitch.api.vo.snaps.FilesVO;
  * @see http://developer.glitch.com/api/explore/#!snaps.detail
  * @author Wijnand
  */
-public class DetailResponse extends GlitchResponse {
+public class DetailBaseResponse extends GlitchResponse {
 
 	@SerializedName("id")
 	public String id;
