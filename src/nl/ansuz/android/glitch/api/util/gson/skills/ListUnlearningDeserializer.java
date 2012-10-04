@@ -1,10 +1,11 @@
-package nl.ansuz.android.glitch.api.util.gson;
+package nl.ansuz.android.glitch.api.util.gson.skills;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
 import nl.ansuz.android.glitch.api.response.skills.ListUnlearningResponse;
+import nl.ansuz.android.glitch.api.util.gson.GlitchDeserializer;
 import nl.ansuz.android.glitch.api.vo.players.SkillVO;
 
 import com.google.gson.JsonDeserializationContext;

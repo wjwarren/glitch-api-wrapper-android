@@ -1,9 +1,10 @@
-package nl.ansuz.android.glitch.api.util.gson;
+package nl.ansuz.android.glitch.api.util.gson.skills;
 
 import java.lang.reflect.Type;
 import java.util.Map;
 
 import nl.ansuz.android.glitch.api.response.skills.UnlearnResponse;
+import nl.ansuz.android.glitch.api.util.gson.GlitchDeserializer;
 import nl.ansuz.android.glitch.api.vo.skills.UnlearningVO;
 
 import com.google.gson.JsonDeserializationContext;

@@ -1,4 +1,4 @@
-package nl.ansuz.android.glitch.api.util.gson;
+package nl.ansuz.android.glitch.api.util.gson.skills;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
