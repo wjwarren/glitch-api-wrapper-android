@@ -22,9 +22,6 @@ public class SnapOwnerVO {
 	@SerializedName("name")
 	public String name;
 	
-	@SerializedName("urls")
-	public SnapOwnerAvatarVO avatarUrls;
-	
 	@SerializedName("user_id")
 	public String user_id;
 	
@@ -91,10 +88,10 @@ public class SnapOwnerVO {
 	// NOTE: These urls result in a 401, so not deserializing them further (for
 	// now).
 	@SerializedName("base_urls")
-	public Map<String, String> base_urls;
+	public Map<String, String> baseUrls;
 	
 	@SerializedName("urls")
-	public AvatarImagesVO urls;
+	public AvatarImagesVO avatarUrls;
 	
 	/**
 	 * Whether or not this is the primary (account?).

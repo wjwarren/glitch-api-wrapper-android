@@ -9,17 +9,8 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Wijnand
  */
-public class AvatarImagesVO {
+public class AvatarImagesVO extends SnapOwnerAvatarVO {
 
-	@SerializedName("singles_172")
-	public String singles172;
-	
-	@SerializedName("singles_100")
-	public String singles100;
-	
-	@SerializedName("singles_50")
-	public String singles50;
-	
 	@SerializedName("sheet_base")
 	public String sheetBase;
 	

@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Response object for snaps.comment.
  * 
+ * Note: Deserialize using the DetailDeserializer!
+ * 
  * @see http://developer.glitch.com/api/explore/#!snaps.detail
  * @author Wijnand
  */

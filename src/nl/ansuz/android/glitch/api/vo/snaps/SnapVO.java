@@ -73,7 +73,7 @@ public class SnapVO {
 	private String isDeleted;
 	
 	@SerializedName("date_deleted")
-	public String date_deleted;
+	public String dateDeleted;
 	
 	@SerializedName("is_ok")
 	private String isOk;

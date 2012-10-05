@@ -8,12 +8,13 @@ import nl.ansuz.android.glitch.api.vo.snaps.SnapVO;
 /**
  * Response object for snaps.getRecentForPlayer.
  * 
+ * Note: Deserialize using the GetRecentForPlayerDeserializer!
+ * 
  * @see http://developer.glitch.com/api/explore/#!snaps.getRecentForPlayer
  * @author Wijnand
  */
 public class GetRecentForPlayerResponse extends GlitchResponse {
 
-	// TODO: Create custom Deserializer to deal with horrible JSON.
 	@SerializedName("photos")
 	public SnapVO[] snaps;
 	
