@@ -36,8 +36,8 @@ public class SnapListDeserializer extends GlitchDeserializer {
 			// Copying manually to avoid overwriting defaults.
 			target.page = pagination.page;
 			target.perPage = pagination.perPage;
-			target.pages = pagination.pages;
-			target.total = pagination.total;
+			target.setPageCount(pagination.getPageCount());
+			target.setTotal(pagination.getTotal());
 		}
 		
 		// Deserialize snaps list.

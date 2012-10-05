@@ -9,8 +9,11 @@ import com.google.gson.annotations.SerializedName;
  */
 public class PagedResponse extends GlitchResponse {
 
+	@SerializedName("page_count")
+	private int pageCount;
+	
 	@SerializedName("pages")
-	public int pages;
+	private int pages;
 	
 	@SerializedName("per_page")
 	public int perPage;
@@ -19,6 +22,52 @@ public class PagedResponse extends GlitchResponse {
 	public int page;
 	
 	@SerializedName("total")
-	public int total;
+	private int total;
+	
+	@SerializedName("total_count")
+	private int totalCount;
+	
+	/**
+	 * CONSTRUCTOR
+	 */
+	public PagedResponse() {
+		pageCount = 0;
+		pages = 0;
+		
+		total = 0;
+		totalCount = 0;
+	}
+	
+	/**
+	 * The total number of entries.
+	 * 
+	 * Sometimes the JSON contains "total", sometimes it is "total_count".
+	 */
+	public int getTotal() {
+		return total + totalCount;
+	}
+	/**
+	 * Stores the total number of entries.
+	 */
+	public void setTotal(int total) {
+		this.total = total;
+		totalCount = 0;
+	}
+	
+	/**
+	 * The total number of pages.
+	 * 
+	 * Sometimes the JSON contains "pages", sometimes it is "page_count".
+	 */
+	public int getPageCount() {
+		return pages + pageCount;
+	}
+	/**
+	 * Stores the total number of pages.
+	 */
+	public void setPageCount(int pages) {
+		this.pages = pages;
+		pageCount = 0;
+	}
 	
 }
