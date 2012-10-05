@@ -57,6 +57,7 @@ public class GlitchDeserializer {
 	
 	/**
 	 * Copies the values from the base to the actual SkillVO.
+	 * TODO: Make the return type of type of "to".
 	 * 
 	 * @param from The base object to copy the values from.
 	 * @param to The object to copy the values to.
@@ -70,12 +71,12 @@ public class GlitchDeserializer {
 			Object value = null;
 			
 			try {
-				value = from.getClass().getDeclaredField(propertyName).get(from);
+				value = from.getClass().getField(propertyName).get(from);
 			} catch (NoSuchFieldException e) {
-				Log.e(LOG_TAG, " - NoSuchFieldException when getting the value.");
+				Log.e(LOG_TAG, " - NoSuchFieldException when getting the value for: " + propertyName);
 				continue;
 			} catch (IllegalAccessException e) {
-				Log.e(LOG_TAG, " - IllegalAccessException when getting the value.");
+				Log.e(LOG_TAG, " - IllegalAccessException when getting the value for: " + propertyName);
 				continue;
 			}
 			
@@ -83,10 +84,10 @@ public class GlitchDeserializer {
 				Field toField = to.getClass().getField(propertyName);
 				toField.set(to, value);
 			} catch (NoSuchFieldException e) {
-				Log.e(LOG_TAG, " - NoSuchFieldException when setting the value.");
+				Log.e(LOG_TAG, " - NoSuchFieldException when setting the value for: " + propertyName);
 				continue;
 			} catch(IllegalAccessException e) {
-				Log.e(LOG_TAG, " - IllegalAccessException when setting the value.");
+				Log.e(LOG_TAG, " - IllegalAccessException when setting the value for: " + propertyName);
 				continue;
 			}
 			
