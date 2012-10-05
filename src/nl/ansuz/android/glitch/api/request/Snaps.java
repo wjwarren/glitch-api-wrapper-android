@@ -1,6 +1,11 @@
 package nl.ansuz.android.glitch.api.request;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.HashMap;
+
+import android.util.Log;
 
 import com.tinyspeck.android.Glitch;
 import com.tinyspeck.android.GlitchRequest;
@@ -45,6 +50,8 @@ public class Snaps {
 		public static final String COUNT = "count";
 	}
 
+	private static final String LOG_TAG = "Snaps";
+
 	/**
 	 * Generic Snaps request generator.
 	 * 
@@ -76,6 +83,13 @@ public class Snaps {
 	 */
 	public static GlitchRequest createCommentRequest(Glitch glitch,
 			String ownerTsid, String snapId, String comment) {
+		
+		try {
+			comment = URLEncoder.encode(comment, Charset.defaultCharset().name());
+		} catch (UnsupportedEncodingException e) {
+			Log.e(LOG_TAG, "Error encoding the comment.", e);
+		}
+		
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put(Parameter.OWNER_TSID, ownerTsid);
 		params.put(Parameter.SNAP_ID, snapId);
