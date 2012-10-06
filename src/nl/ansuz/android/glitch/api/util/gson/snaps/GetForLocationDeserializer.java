@@ -21,7 +21,7 @@ public class GetForLocationDeserializer extends SnapListDeserializer implements
 	public GetForLocationResponse deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
 		
-		return (GetForLocationResponse)deserialize(new GetForLocationResponse(), json, context);
+		return deserialize(new GetForLocationResponse(), json, context);
 	}
 
 }

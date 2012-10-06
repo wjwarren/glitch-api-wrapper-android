@@ -21,7 +21,7 @@ public class GetRecentDeserializer extends SnapListDeserializer implements
 	public GetRecentResponse deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
 
-		return (GetRecentResponse)deserialize(new GetRecentResponse(), json, context);
+		return deserialize(new GetRecentResponse(), json, context);
 	}
 
 }
