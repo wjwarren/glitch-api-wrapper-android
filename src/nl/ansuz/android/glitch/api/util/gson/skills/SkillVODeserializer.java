@@ -33,7 +33,7 @@ public class SkillVODeserializer extends GlitchDeserializer implements JsonDeser
 		// Deserialize base info.
 		SkillVO skill = new SkillVO();
 		SkillVOBase skillBase = (SkillVOBase)context.deserialize(json, SkillVOBase.class);
-		skill = copyFromSkillBase(skillBase, skill);
+		skill = copyFromTo(skillBase, skill);
 		
 		// Deserialize unlearn quest removal.
 		if(jsonObject.has("unlearn_quest_removal")) {
@@ -64,16 +64,6 @@ public class SkillVODeserializer extends GlitchDeserializer implements JsonDeser
 		}
 		
 		return skill;
-	}
-
-	/**
-	 * Copies the values from the base to the actual SkillVO.
-	 * 
-	 * @param from The base object to copy the values from.
-	 * @param to The actual SkillVO to copy the values to.
-	 */
-	private SkillVO copyFromSkillBase(SkillVOBase from, SkillVO to) {
-		return (SkillVO)copyFromTo(from, to);
 	}
 
 }

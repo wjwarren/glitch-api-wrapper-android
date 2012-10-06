@@ -26,7 +26,7 @@ public class GetRecentForPlayerDeserializer extends GlitchDeserializer
 		
 		// Deserialize defaults.
 		GlitchResponse defaults = context.deserialize(json, GlitchResponse.class);
-		result = copyDefaults(defaults, result);
+		result = copyFromTo(defaults, result);
 		
 		// Count the Number of Snaps.
 		int snapCount = 0;
@@ -49,18 +49,6 @@ public class GetRecentForPlayerDeserializer extends GlitchDeserializer
 		}
 		
 		return result;
-	}
-
-	/**
-	 * Copies the values from the base to the actual GetRecentForPlayerResponse.
-	 * 
-	 * @param from The base object to copy the values from.
-	 * @param to The actual GetRecentForPlayerResponse to copy the values to.
-	 */
-	private GetRecentForPlayerResponse copyDefaults(GlitchResponse from,
-			GetRecentForPlayerResponse to) {
-		
-		return (GetRecentForPlayerResponse)copyFromTo(from, to);
 	}
 
 }

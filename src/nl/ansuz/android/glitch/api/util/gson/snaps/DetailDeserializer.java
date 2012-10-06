@@ -33,7 +33,7 @@ public class DetailDeserializer extends GlitchDeserializer implements JsonDeseri
 		// Deserialize base info.
 		DetailResponse details = new DetailResponse();
 		DetailBaseResponse detailsBase = (DetailBaseResponse)context.deserialize(json, DetailBaseResponse.class);
-		details = copyFromDetailBase(detailsBase, details);
+		details = copyFromTo(detailsBase, details);
 		
 		// Deserialize comments
 		if(jsonObject.has("comments")) {
@@ -53,16 +53,6 @@ public class DetailDeserializer extends GlitchDeserializer implements JsonDeseri
 		}
 		
 		return details;
-	}
-	
-	/**
-	 * Copies the values from the base to the actual DetailResponse.
-	 * 
-	 * @param from The base object to copy the values from.
-	 * @param to The actual DetailResponse to copy the values to.
-	 */
-	private DetailResponse copyFromDetailBase(DetailBaseResponse from, DetailResponse to) {
-		return (DetailResponse)copyFromTo(from, to);
 	}
 
 }

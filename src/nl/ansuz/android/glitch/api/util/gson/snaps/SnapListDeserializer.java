@@ -13,61 +13,56 @@ import nl.ansuz.android.glitch.api.util.gson.GlitchDeserializer;
 import nl.ansuz.android.glitch.api.vo.snaps.SnapVO;
 
 /**
- * GSON deserializer base for Snaps API responses that contain a list of snaps.
- *  
+ * Generic GSON deserializer base for Snaps API responses that contain a list of
+ * snaps.
+ * 
  * @author Wijnand
  */
 public class SnapListDeserializer extends GlitchDeserializer {
 
-	protected SnapListBaseResponse deserialize(SnapListBaseResponse target, JsonElement json, JsonDeserializationContext context) throws JsonParseException {
-		
+	protected <T extends SnapListBaseResponse> T deserialize(T target,
+			JsonElement json, JsonDeserializationContext context)
+			throws JsonParseException {
+
 		JsonObject jsonObject = json.getAsJsonObject();
-		
+
 		// Deserialize defaults.
-		GlitchResponse defaults = context.deserialize(json, GlitchResponse.class);
-		target = copyDefaults(defaults, target);
-		
+		GlitchResponse defaults = context.deserialize(json,
+				GlitchResponse.class);
+		target = copyFromTo(defaults, target);
+
 		// Deserialize pagination.
-		if(jsonObject.has("pagination")) {
+		if (jsonObject.has("pagination")) {
 			JsonElement paginationElement = jsonObject.get("pagination");
-			
-			PagedResponse pagination = context.deserialize(paginationElement, PagedResponse.class);
-			
+
+			PagedResponse pagination = context.deserialize(paginationElement,
+					PagedResponse.class);
+
 			// Copying manually to avoid overwriting defaults.
 			target.page = pagination.page;
 			target.perPage = pagination.perPage;
 			target.setPageCount(pagination.getPageCount());
 			target.setTotal(pagination.getTotal());
 		}
-		
+
 		// Deserialize snaps list.
-		if(jsonObject.has("photos")) {
+		if (jsonObject.has("photos")) {
 			JsonElement photosElement = jsonObject.get("photos");
-			
-			if(photosElement.isJsonArray()) {
+
+			if (photosElement.isJsonArray()) {
 				// Only parse photos when it is an array.
 				JsonArray photoList = photosElement.getAsJsonArray();
 				target.snaps = new SnapVO[photoList.size()];
-				
-				for(int i = 0; i < photoList.size(); i++) {
-					target.snaps[i] = (SnapVO)context.deserialize(photoList.get(i), SnapVO.class);
+
+				for (int i = 0; i < photoList.size(); i++) {
+					target.snaps[i] = (SnapVO) context.deserialize(
+							photoList.get(i), SnapVO.class);
 				}
 			} else {
 				target.snaps = null;
 			}
 		}
-		
+
 		return target;
 	}
-
-	/**
-	 * Copies the values from the base to the actual GetForLocationResponse.
-	 * 
-	 * @param from The base object to copy the values from.
-	 * @param to The actual GetForLocationResponse to copy the values to.
-	 */
-	protected SnapListBaseResponse copyDefaults(GlitchResponse from, SnapListBaseResponse to) {
-		return (SnapListBaseResponse)copyFromTo(from, to);
-	}
-	
 }
