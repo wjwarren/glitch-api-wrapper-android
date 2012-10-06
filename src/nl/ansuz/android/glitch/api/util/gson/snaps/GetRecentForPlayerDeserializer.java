@@ -14,6 +14,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
+/**
+ * GSON deserializer for Glitch Snaps.getRecentForPlayer API response.
+ * 
+ * @author Wijnand
+ */
 public class GetRecentForPlayerDeserializer extends GlitchDeserializer
 		implements JsonDeserializer<GetRecentForPlayerResponse> {
 

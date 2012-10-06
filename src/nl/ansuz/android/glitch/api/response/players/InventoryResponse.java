@@ -5,10 +5,13 @@ import java.util.Map;
 import com.google.gson.annotations.SerializedName;
 
 import nl.ansuz.android.glitch.api.response.GlitchResponse;
+import nl.ansuz.android.glitch.api.vo.players.FurnitureSlotVO;
 import nl.ansuz.android.glitch.api.vo.players.InventorySlotVO;
 
 /**
  * Response object for players.inventory.
+ * 
+ * NOTE: Use the InventoryDeserializer to deserialize the API response.
  * 
  * @see http://developer.glitch.com/api/explore/#!players.inventory
  * @author Wijnand
@@ -19,8 +22,8 @@ public class InventoryResponse extends GlitchResponse {
 	@SerializedName("contents")
 	public Map<String, InventorySlotVO> contents;
 	
-	// TODO: Figure out what the contents of this Object is.
+	// Map key is the furniture category.
 	@SerializedName("furniture")
-	public Object furniture;
+	public Map<String, FurnitureSlotVO[]> furniture;
 	
 }
