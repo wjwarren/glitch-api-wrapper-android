@@ -56,13 +56,12 @@ public class GlitchDeserializer {
 	}
 	
 	/**
-	 * Copies the values from the base to the actual SkillVO.
-	 * TODO: Make the return type of type of "to".
+	 * Copies the values from the base object to the actual target object.
 	 * 
 	 * @param from The base object to copy the values from.
 	 * @param to The object to copy the values to.
 	 */
-	protected Object copyFromTo(Object from, Object to) {
+	protected <T> T copyFromTo(Object from, T to) {
 		Field[] baseFields = from.getClass().getFields();
 		
 		for(Field fromProperty : baseFields) {
